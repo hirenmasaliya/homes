@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Excel File</title>
+    <style>
+
+        .container {
+            background: white;
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+
+        }
+
+        h1 {
+            color: #333;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: block;
+            text-align: left;
+            width: 100%;
+        }
+
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background: #fff;
+            cursor: pointer;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin: 10px 0;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        /* Back button styles */
+        .back-button {
+            background: #007BFF;
+            margin-top: 20px;
+        }
+
+        .back-button:hover {
+            background: #0056b3;
+        }
+
+        /* Message box */
+        .message {
+            margin-top: 20px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            button {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Upload Excel File</h1>
+        <p>Please upload an Excel file containing building, floor, and flat information. Supported formats: .xlsx</p>
+        
+        <form action="uploadfile.php" method="post" enctype="multipart/form-data">
+            <label for="excel_file">Select Excel File:</label>
+            <input type="file" name="excel_file" id="excel_file" accept=".xlsx, .xls" required>
+            <button type="submit">Upload</button>
+        </form>
+
+        <div class="message">
+            <?php
+            if (isset($_GET['message'])) {
+                echo htmlspecialchars($_GET['message']);
+            }
+            ?>
+        </div>
+    </div>
+</body>
+</html>
